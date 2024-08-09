@@ -16,11 +16,11 @@ def profile(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully')
+            messages.success(request, 'Профіль успішно оновлено')
         else:
             messages.error(request,
-                           ('Update failed. Please ensure '
-                            'the form is valid.'))
+                           ('Не вдалося оновити. Будь ласка, переконайтеся, що '
+                            'форма є дійсною.'))
     else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
@@ -39,8 +39,8 @@ def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (
-        f'This is a past confirmation for order number {order_number}. '
-        'A confirmation email was sent on the order date.'
+        f'Це минуле підтвердження для номера замовлення {order_number}. '
+        'Підтвердження було надіслано на електронну пошту в день замовлення.'
     ))
 
     template = 'checkout/checkout_success.html'

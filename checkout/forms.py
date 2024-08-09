@@ -17,14 +17,14 @@ class OrderForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'full_name': 'Full Name',
-            'email': 'Email Address',
-            'phone_number': 'Phone Number',
-            'postcode': 'Postal Code',
-            'town_or_city': 'Town or City',
-            'street_address1': 'Street Address 1',
-            'street_address2': 'Street Address 2',
-            'county': 'County, State or Locality',
+            'full_name': 'ПІБ',
+            'email': 'Email',
+            'phone_number': 'Номер телефону',
+            'postcode': 'Поштовий індекс',
+            'town_or_city': 'Місто або село',
+            'street_address1': 'Адреса 1',
+            'street_address2': 'Адреса 2',
+            'county': 'Область',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True

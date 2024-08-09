@@ -1,22 +1,20 @@
-Hello {{ order.full_name }}!
+Вітаю, {{ order.full_name }}!
 
-This is a confirmation of your order at Boutique Ado. Your order information is below:
+Це підтвердження вашого замовлення в The BigStore. Інформація про ваше замовлення наведена нижче:
 
-Order Number: {{ order.order_number }}
-Order Date: {{ order.date }}
+Номер замовлення: {{ order.order_number }}
+Дата замовлення: {{ order.date }}
 
-Order Total: ${{ order.order_total }}
-Delivery: ${{ order.delivery_cost }}
-Grand Total: ${{ order.grand_total }}
+Сума замовлення: {{ order.order_total }}грн
+Доставка: {{ order.delivery_cost }}грн
+Загальна сума: {{ order.grand_total }}грн
 
-Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+Ваше замовлення буде відправлено на адресу {{ order.street_address1 }} в {{ order.town_or_city }}, {{ order.country }}.
+Ваш номер телефону: {{ order.phone_number }}.
 
-We've got your phone number on file as {{ order.phone_number }}.
+Якщо у вас виникли запитання, будь ласка, зв'яжіться з нами за адресою {{ contact_email }}.
 
-If you have any questions, feel free to contact us at {{ contact_email }}.
-
-Thank you for your order!
+Дякуємо за ваше замовлення!
 
 Sincerely,
-
-Boutique Ado
+The BigStore

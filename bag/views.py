@@ -69,27 +69,27 @@ def adjust_bag(request, item_id):
         if quantity > 0:
             bag[item_id]['items_by_size'][size] = quantity
             messages.success(request,
-                             (f'Updated size {size.upper()} '
-                              f'{product.name} quantity to '
+                             (f'Оновлено розмір {size.upper()} '
+                              f'{product.name} кількість '
                               f'{bag[item_id]["items_by_size"][size]}'))
         else:
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
             messages.success(request,
-                             (f'Removed size {size.upper()} '
-                              f'{product.name} from your bag'))
+                             (f'Видалено розмір {size.upper()} '
+                              f'{product.name} з кошику'))
     else:
         if quantity > 0:
             bag[item_id] = quantity
             messages.success(request,
-                             (f'Updated {product.name} '
-                              f'quantity to {bag[item_id]}'))
+                             (f'Оновлено {product.name} '
+                              f'кількість {bag[item_id]}'))
         else:
             bag.pop(item_id)
             messages.success(request,
-                             (f'Removed {product.name} '
-                              f'from your bag'))
+                             (f'Видалено {product.name} '
+                              f'з кошику'))
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
@@ -110,15 +110,15 @@ def remove_from_bag(request, item_id):
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
             messages.success(request,
-                             (f'Removed size {size.upper()} '
-                              f'{product.name} from your bag'))
+                             (f'Видалено розмір {size.upper()} '
+                              f'{product.name} з кошику'))
         else:
             bag.pop(item_id)
-            messages.success(request, f'Removed {product.name} from your bag')
+            messages.success(request, f'Видалено {product.name} з кошику')
 
         request.session['bag'] = bag
         return HttpResponse(status=200)
 
     except Exception as e:
-        messages.error(request, f'Error removing item: {e}')
+        messages.error(request, f'Помилка при видаленні товару: {e}')
         return HttpResponse(status=500)

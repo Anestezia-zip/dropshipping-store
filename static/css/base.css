@@ -7,7 +7,7 @@ body {
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
-    font-family: 'Lato';
+    font-family: 'Roboto', sans-serif;
 }
 
 /* from Bulma */
@@ -19,7 +19,11 @@ body {
     width: 1.5rem;
 }
 
-.logo-font {
+.let-sp {
+    letter-spacing: 1px;
+}
+
+.uppercase {
     text-transform: uppercase;
 }
 

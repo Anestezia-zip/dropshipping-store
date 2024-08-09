@@ -43,7 +43,7 @@ def all_products(request):
             query = request.GET['q']
             if not query:
                 messages.error(request,
-                               ("You didn't enter any search criteria!"))
+                               ("Ви не ввели жодних критеріїв пошуку!"))
                 return redirect(reverse('products'))
 
             queries = Q(name__icontains=query) | Q(description__icontains=query)
@@ -77,19 +77,19 @@ def product_detail(request, product_id):
 def add_product(request):
     """ Add a product to the store """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
+        messages.error(request, 'На жаль, це можуть робити лише власники магазину')
         return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
-            messages.success(request, 'Successfully added product!')
+            messages.success(request, 'Успішно додано товар.')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request,
-                           ('Failed to add product. '
-                            'Please ensure the form is valid.'))
+                           ('Не вдалося додати товар.'
+                            'Переконайтеся, що форма дійсна.'))
     else:
         form = ProductForm()
 
@@ -105,7 +105,7 @@ def add_product(request):
 def edit_product(request, product_id):
     """ Edit a product in the store """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
+        messages.error(request, 'На жаль, це можуть робити лише власники магазину.')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -113,15 +113,15 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Successfully updated product!')
+            messages.success(request, 'Успішно оновлено товар.')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request,
-                           ('Failed to update product. '
-                            'Please ensure the form is valid.'))
+                           ('Не вдалося додати товар.'
+                            'Переконайтеся, що форма дійсна.'))
     else:
         form = ProductForm(instance=product)
-        messages.info(request, f'You are editing {product.name}')
+        messages.info(request, f'Ви редагуєте {product.name}')
 
     template = 'products/edit_product.html'
     context = {
@@ -136,10 +136,10 @@ def edit_product(request, product_id):
 def delete_product(request, product_id):
     """ Delete a product from the store """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
+        messages.error(request, 'На жаль, це можуть робити лише власники магазину.')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
-    messages.success(request, 'Product deleted!')
+    messages.success(request, 'Продукт видалений.')
     return redirect(reverse('products'))

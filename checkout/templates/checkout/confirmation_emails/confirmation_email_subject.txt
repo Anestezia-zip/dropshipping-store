@@ -1,1 +1,1 @@
-Boutique Ado Confirmation for Order Number {{ order.order_number }}
+Підтвердження замовлення The BigStore за номером {{ order.order_number }}

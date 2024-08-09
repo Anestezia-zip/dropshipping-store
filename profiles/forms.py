@@ -14,12 +14,12 @@ class UserProfileForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'default_phone_number': 'Phone Number',
-            'default_postcode': 'Postal Code',
-            'default_town_or_city': 'Town or City',
-            'default_street_address1': 'Street Address 1',
-            'default_street_address2': 'Street Address 2',
-            'default_county': 'County, State or Locality',
+            'default_phone_number': 'Номер телефону',
+            'default_postcode': 'Поштовий індекс',
+            'default_town_or_city': 'Місто або село',
+            'default_street_address1': 'Адреса 1',
+            'default_street_address2': 'Адреса 2',
+            'default_county': 'Область',
         }
 
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True

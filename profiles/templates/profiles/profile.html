@@ -19,29 +19,29 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">My Profile</h2>
+                <h2 class="logo-font mb-4">Мій профіль</h2>
                 <hr>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-lg-6">
-                <p class="text-muted">Default Delivery Information</p>
+                <p class="text-muted">Інформація про доставку</p>
                 <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class="btn btn-black rounded-0 text-uppercase float-right">Update Information</button>
+                    <button class="btn btn-black rounded-0 text-uppercase float-right">Оновити інформацію</button>
                 </form>
             </div>
             <div class="col-12 col-lg-6">
-                <p class="text-muted">Order History</p>
+                <p class="text-muted">Історія замовлень</p>
                 <div class="order-history table-responsive">
                     <table class="table table-sm table-borderless">
                         <thead>
                             <tr>
-                                <th>Order Number</th>
-                                <th>Date</th>
-                                <th>Items</th>
-                                <th>Order Total</th>
+                                <th>Номер замовлення</th>
+                                <th>Дата</th>
+                                <th>Товари</th>
+                                <th>Усього</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,7 +59,7 @@
                                             {% for item in order.lineitems.all %}
                                                 <li class="small">
                                                     {% if item.product.has_sizes %}
-                                                        Size {{ item.product.size|upper }}
+                                                        Розмір {{ item.product.size|upper }}
                                                     {% endif %}{{ item.product.name }} x{{ item.quantity }}
                                                 </li>
                                             {% endfor %}
