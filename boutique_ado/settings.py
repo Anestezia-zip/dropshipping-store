@@ -29,7 +29,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = True
 # DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['ckz8780-boutique-ado.herokuapp.com', 'localhost', '8000-anesteziazi-dropshippin-pak2ghmoqcc.ws-eu115.gitpod.io']
+ALLOWED_HOSTS = [
+    'ckz8780-boutique-ado.herokuapp.com', 
+    'localhost', 
+    '8000-anesteziazi-dropshippin-pak2ghmoqcc.ws-eu115.gitpod.io',
+    'the-bigstore-25811474d6ce.herokuapp.com'
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-anesteziazi-dropshippin-pak2ghmoqcc.ws-eu115.gitpod.io',
